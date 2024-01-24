@@ -1,13 +1,15 @@
 
-#Declaring a variable
+#DATA TYPES
+
+'Declaring a variable'
 x<-1
 print(x)
 
-#Declaring an integer sequence
+'Declaring an integer sequence'
 y<-1:20
 y
 
-#Data Types - R Objects and Attributes
+'Data Types - R Objects and Attributes'
 
 '5.3 R Objects
 R has five basic or “atomic” classes of objects:
@@ -155,4 +157,48 @@ x <- c(1, 2, NaN, NA, 4)
 is.na(x)
 is.nan(x) #NAN is also NA value
 
+'5.13 Data Frames
+Data frames are used to store tabular data in R. They are an important type of object in R and
+are used in a variety of statistical modeling applications. Hadley Wickham’s package dplyr⁵ has an
+optimized set of functions designed to work efficiently with data frames.
+Data frames are represented as a special type of list where every element of the list has to have the
+same length. Each element of the list can be thought of as a column and the length of each element
+of the list is the number of rows.
+Unlike matrices, data frames can store different classes of objects in each column. Matrices must
+have every element be the same class (e.g. all integers or all numeric).
+In addition to column names, indicating the names of the variables or predictors, data frames have
+a special attribute called row.names which indicate information about each row of the data frame.
+Data frames are usually created by reading in a dataset using the read.table() or read.csv().
+However, data frames can also be created explicitly with the data.frame() function or they can be
+coerced from other types of objects like lists.
+Data frames can be converted to a matrix by calling data.matrix(). While it might seem that the
+as.matrix() function should be used to coerce a data frame to a matrix, almost always, what you
+want is the result of data.matrix().'
+
+x<-data.frame(foo=1:4,bar=c(T,T,F,F))
+x
+nrow(x)
+ncol(x)
+
+'5.14 Names
+R objects can have names, which is very useful for writing readable code and self-describing objects.
+Here is an example of assigning names to an integer vector.'
+
+x<-1:3
+names(x)
+
+names(x)<-c("New York","Seattle","Los Angeles")
+names(x)
+
+  'Lists can also have names, which is often very useful.'
+x<-list("Los Angeles"=1,Boston=2,London=3)
+names(x)
+
+  'Matrices can have both column and row names.'
+m <- matrix(1:4, nrow = 2, ncol = 2)
+dimnames(m) <- list(c("a", "b"), c("c", "d"))
+m
+  'Column names and row names can be set separately using the colnames() and rownames() functions.'
+colnames(m) <- c("h", "f")
+rownames(m) <- c("x", "z")
 
